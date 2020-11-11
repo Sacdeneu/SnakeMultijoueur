@@ -4,6 +4,7 @@ const { initGame, gameLoop, getUpdatedVelocity,  } = require('./game');
 const { FRAME_RATE } = require('./constants');
 const { makeid } = require('./utils')
 
+let port = process.env.PORT || 80
 const state = {};
 const clientRooms = {};
 const path = require('path');
@@ -116,7 +117,7 @@ function emitGameOver(roomName, winner){
     .emit('gameOver', JSON.stringify({ winner }));
 }
 
-httpServer.listen(3000, () => {
+httpServer.listen(port, () => {
     console.log('go to http://localhost:3000');
 });
   
